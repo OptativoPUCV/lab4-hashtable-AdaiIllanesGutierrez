@@ -101,13 +101,17 @@ while(map->buckets[index]!=NULL){
 }
 
 Pair * firstMap(HashMap * map) {
-  for (long i = 0; i < map->capacity; i++) {
+  if (map == NULL || map->buckets == NULL) {
+    return NULL;
+  }
+  // Buscar el primer Pair válido en el arreglo buckets
+  for (int i = 0; i < map->capacity; i++) {
     if (map->buckets[i] != NULL) {
-        map->current = i;
+        map->current = i; // Actualizar el índice actual
         return map->buckets[i];
     }
   }
-  return NULL;
+  return NULL; // No se encontraron Pairs válidos
 }
 
 Pair * nextMap(HashMap * map) {
