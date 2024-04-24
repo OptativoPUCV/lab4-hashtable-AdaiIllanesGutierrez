@@ -85,11 +85,8 @@ void eraseMap(HashMap * map,  char * key) {
       free(pair->key);
       free(pair->value);
       free(pair);
-
-      if (map->current != -1) {
-          map->buckets[map->current] = NULL;
-          map->size--;
-      }
+      map->buckets[map->current] = NULL;
+      map->size--; 
   }
   
 }
@@ -117,7 +114,7 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-  for (long i = map->current ; i < map->capacity-1; i++) {
+  for (long i = map->current ; i < map->capacity; i++) {
     if (map->buckets[i] != NULL) {
         map->current = i;
         return map->buckets[i];
