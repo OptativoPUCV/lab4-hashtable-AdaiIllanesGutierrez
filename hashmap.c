@@ -105,16 +105,21 @@ while(map->buckets[index]!=NULL){
 }
 
 Pair * firstMap(HashMap * map) {
-for (long i=0;i<map->capacity;i++){
-  if(map->buckets[i] != NULL){
-    map->current = i;
-    return map->buckets[i];
+  for (long i = 0; i < map->capacity; i++) {
+    if (map->buckets[i] != NULL) {
+        map->current = i;
+        return map->buckets[i];
+    }
   }
-}
-    return NULL;
+  return NULL;
 }
 
 Pair * nextMap(HashMap * map) {
-
-    return NULL;
+  for (long i = map->current+1 ; i < map->capacity; i++) {
+    if (map->buckets[i] != NULL) {
+        map->current = i;
+        return map->buckets[i];
+    }
+  }
+  return NULL;
 }
